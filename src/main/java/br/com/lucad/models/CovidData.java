@@ -1,34 +1,26 @@
 package br.com.lucad.models;
 
+import br.com.lucad.JsonConvert;
+import com.google.gson.Gson;
+
 import java.util.List;
 
 public class CovidData {
 
     private CovidGlobal Global;
-    private List<CovidBrasil> Countries;
-    private String ID;
+    private List<Countries> Countries;
 
-    public String getID() {
-        return ID;
-    }
-
-    public void setID(String ID) {
-        this.ID = ID;
-    }
 
     public CovidGlobal getGlobal() {
         return Global;
     }
-
-    public void setGlobal(CovidGlobal global) {
-        this.Global = global;
-    }
-
-    public List<CovidBrasil> getCountries() {
+    public List<Countries> getCountries() {
         return Countries;
     }
 
-    public void setCountries(List<CovidBrasil> countries) {
-        this.Countries = countries;
+
+    public CovidData fromJson(String body){
+        return JsonConvert.fromJson(body);
     }
+
 }

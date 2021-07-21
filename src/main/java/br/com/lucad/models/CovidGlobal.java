@@ -2,8 +2,8 @@ package br.com.lucad.models;
 
 public class CovidGlobal {
     private int NewConfirmed;
-    private int totalConfirmed	;
-    private int newDeaths;
+    private int TotalConfirmed;
+    private int NewDeaths;
     private int totalDeaths;
     private int newRecovered;
     private int totalRecovered;
@@ -20,19 +20,19 @@ public class CovidGlobal {
     }
 
     public int getTotalConfirmed() {
-        return totalConfirmed;
+        return TotalConfirmed;
     }
 
     public void setTotalConfirmed(int totalConfirmed) {
-        this.totalConfirmed = totalConfirmed;
+        this.TotalConfirmed = totalConfirmed;
     }
 
     public int getNewDeaths() {
-        return newDeaths;
+        return NewDeaths;
     }
 
     public void setNewDeaths(int newDeaths) {
-        this.newDeaths = newDeaths;
+        this.NewDeaths = newDeaths;
     }
 
     public int getTotalDeaths() {
