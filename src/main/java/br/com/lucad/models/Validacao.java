@@ -1,4 +1,4 @@
-package br.com.lucad;
+package br.com.lucad.models;
 
 import br.com.lucad.views.MainMenu;
 

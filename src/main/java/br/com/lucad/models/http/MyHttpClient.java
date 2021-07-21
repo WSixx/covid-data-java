@@ -1,26 +1,26 @@
-package br.com.lucad.http;
+package br.com.lucad.models.http;
 
-import br.com.lucad.models.CovidData;
+import br.com.lucad.controller.CovidDataController;
 import okhttp3.*;
 
 import java.io.IOException;
 import java.util.concurrent.Callable;
 
-public class MyHttpClient implements Callable<CovidData> {
+public class MyHttpClient implements Callable<CovidDataController> {
 
     private final static String BASE_URL = "https://api.covid19api.com/summary";
     private final OkHttpClient client = new OkHttpClient();
 
-    CovidData retorno = new CovidData();
+    CovidDataController retorno = new CovidDataController();
 
-    public CovidData httpRequest() {
+    public CovidDataController httpRequest() {
         Request request = new Request.Builder()
                 .url(BASE_URL)
                 .build();
 
         try (Response response = client.newCall(request).execute()) {
-            CovidData covidData = new CovidData().fromJson(response.body().string());
-            retorno = covidData;
+            CovidDataController covidDataController = new CovidDataController().fromJson(response.body().string());
+            retorno = covidDataController;
             return retorno;
         } catch (IOException e) {
             e.printStackTrace();
@@ -29,7 +29,7 @@ public class MyHttpClient implements Callable<CovidData> {
     }
 
     @Override
-    public CovidData call() throws Exception {
+    public CovidDataController call() throws Exception {
         return httpRequest();
     }
 }

@@ -1,20 +1,24 @@
 package br.com.lucad.views;
 
-import br.com.lucad.models.CovidData;
+import br.com.lucad.controller.CovidDataController;
+import br.com.lucad.models.CovidGlobal;
 
 public class Result {
 
-    private CovidData covidData;
+    private CovidGlobal covidGlobal;
 
-    Result(CovidData covidData){
-        this.covidData = covidData;
+    public Result(CovidDataController covidGlobal){
+        this.covidGlobal = covidGlobal.getGlobal();
     }
 
     public void printResult(){
-        System.out.println("Dados Covid-19");
-        System.out.println("getNewConfirmed: " + covidData.getGlobal().getNewConfirmed());
-        System.out.println("getTotalConfirmed: " + covidData.getGlobal().getTotalConfirmed());
-        System.out.println("getNewDeaths: " + covidData.getGlobal().getNewDeaths());
+        System.out.println("\nDados Covid-19:");
+        System.out.println("Novas confirmadas: " + covidGlobal.getNewConfirmed());
+        System.out.println("Total confirmadas: " + covidGlobal.getTotalConfirmed());
+        System.out.println("Novas mortes: " + covidGlobal.getNewDeaths());
     }
 
+    public CovidGlobal getCovidGlobal() {
+        return covidGlobal;
+    }
 }
