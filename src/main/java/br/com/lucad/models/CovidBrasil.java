@@ -1,6 +1,7 @@
 package br.com.lucad.models;
 
-public class CovidGlobal {
+public class CovidBrasil {
+
     private int NewConfirmed;
     private int totalConfirmed	;
     private int newDeaths;
@@ -8,8 +9,6 @@ public class CovidGlobal {
     private int newRecovered;
     private int totalRecovered;
     private String date;
-
-    CovidGlobal(){}
 
     public int getNewConfirmed() {
         return NewConfirmed;
