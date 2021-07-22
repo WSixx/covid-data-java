@@ -16,6 +16,7 @@ public class CovidBrazilController implements BaseCovidController {
     private final ExecutorService threadpool = Executors.newCachedThreadPool();
     private Result result;
 
+
     @Override
     public Result getCovidDataAndPrint() throws InterruptedException, ExecutionException {
         Future<CovidDataController> futureMyHttpClient = iniciaThread();
@@ -43,7 +44,6 @@ public class CovidBrazilController implements BaseCovidController {
             System.out.println("Loading.. " + ++i);
             sleep(1000);
         }
-
     }
 
     @NotNull

@@ -1,15 +1,18 @@
 package br.com.lucad.models;
 
+import br.com.lucad.utils.FormatToBrDate;
+
 public class CovidGlobal {
     private int NewConfirmed;
     private int TotalConfirmed;
     private int NewDeaths;
-    private int totalDeaths;
-    private int newRecovered;
-    private int totalRecovered;
-    private String date;
+    private int TotalDeaths;
+    private int NewRecovered;
+    private int TotalRecovered;
+    private String Date;
 
-    CovidGlobal(){}
+    CovidGlobal() {
+    }
 
     public int getNewConfirmed() {
         return NewConfirmed;
@@ -36,34 +39,36 @@ public class CovidGlobal {
     }
 
     public int getTotalDeaths() {
-        return totalDeaths;
+        return TotalDeaths;
     }
 
     public void setTotalDeaths(int totalDeaths) {
-        this.totalDeaths = totalDeaths;
+        this.TotalDeaths = totalDeaths;
     }
 
     public int getNewRecovered() {
-        return newRecovered;
+        return NewRecovered;
     }
 
     public void setNewRecovered(int newRecovered) {
-        this.newRecovered = newRecovered;
+        this.NewRecovered = newRecovered;
     }
 
     public int getTotalRecovered() {
-        return totalRecovered;
+        return TotalRecovered;
     }
 
     public void setTotalRecovered(int totalRecovered) {
-        this.totalRecovered = totalRecovered;
+        this.TotalRecovered = totalRecovered;
     }
 
     public String getDate() {
-        return date;
+        return FormatToBrDate.getFormatedDate(Date);
     }
 
     public void setDate(String date) {
-        this.date = date;
+        this.Date = date;
     }
+
+
 }

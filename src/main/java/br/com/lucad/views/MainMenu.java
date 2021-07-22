@@ -34,7 +34,7 @@ public class MainMenu {
                 case 2 -> result = covidBrazilController.getCovidDataAndPrint();
                 //TODO: Passar um result getCovidGlobal e gravar em um arq Texto
                 //TODO: Criar uma classe responsável por isso
-                case 3 -> System.out.println("Gravar");
+                case 3 -> System.out.println(result.getCountries().getNewConfirmed());
                 case 4 -> {
                     inMenu = false;
                     userInput.close();

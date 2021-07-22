@@ -1,5 +1,7 @@
 package br.com.lucad.models;
 
+import br.com.lucad.utils.FormatToBrDate;
+
 public class Countries {
 
     private int NewConfirmed;
@@ -59,7 +61,7 @@ public class Countries {
     }
 
     public String getDate() {
-        return Date;
+        return FormatToBrDate.getFormatedDate(Date);
     }
 
     public void setDate(String date) {
