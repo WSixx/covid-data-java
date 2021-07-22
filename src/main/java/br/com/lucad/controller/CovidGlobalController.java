@@ -1,7 +1,7 @@
 package br.com.lucad.controller;
 
 import br.com.lucad.models.http.MyHttpClient;
-import br.com.lucad.views.Result;
+import br.com.lucad.views.ShowResult;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.ExecutionException;
@@ -14,22 +14,22 @@ import static java.lang.Thread.sleep;
 public class CovidGlobalController implements BaseCovidController {
 
     private final ExecutorService threadpool = Executors.newCachedThreadPool();
-    private Result result;
+    private ShowResult showResult;
 
     @Override
-    public Result getCovidDataAndPrint() throws InterruptedException, ExecutionException {
+    public ShowResult getCovidDataAndPrint() throws InterruptedException, ExecutionException {
         Future<CovidDataController> futureMyHttpClient = iniciaThread();
         System.out.println("--Covid Global--\n");
         loadingResult(futureMyHttpClient);
         futureIsComplete(futureMyHttpClient);
-        return result;
+        return showResult;
     }
 
     @Override
     public void futureIsComplete(Future<CovidDataController> futureMyHttpClient) throws InterruptedException, ExecutionException {
         if (futureMyHttpClient.isDone()){
-            result = new Result(futureMyHttpClient.get());
-            result.printGlobalResult();
+            showResult = new ShowResult(futureMyHttpClient.get());
+            showResult.printGlobalResult();
             threadpool.shutdown();
         }
     }

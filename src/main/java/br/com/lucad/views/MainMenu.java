@@ -11,7 +11,7 @@ import java.util.concurrent.ExecutionException;
 public class MainMenu {
 
     private Boolean inMenu = true;
-    private Result result;
+    private ShowResult showResult;
 
     public void menuInit() {
         Scanner userInput = new Scanner(System.in);
@@ -30,11 +30,11 @@ public class MainMenu {
             CovidGlobalController covidGlobalController = new CovidGlobalController();
             CovidBrazilController covidBrazilController = new CovidBrazilController();
             switch (menu) {
-                case 1 -> result = covidGlobalController.getCovidDataAndPrint();
-                case 2 -> result = covidBrazilController.getCovidDataAndPrint();
+                case 1 -> showResult = covidGlobalController.getCovidDataAndPrint();
+                case 2 -> showResult = covidBrazilController.getCovidDataAndPrint();
                 //TODO: Passar um result getCovidGlobal e gravar em um arq Texto
                 //TODO: Criar uma classe responsável por isso
-                case 3 -> System.out.println(result.getCountries().getNewConfirmed());
+                case 3 -> System.out.println(showResult.getCountries().getNewConfirmed());
                 case 4 -> {
                     inMenu = false;
                     userInput.close();

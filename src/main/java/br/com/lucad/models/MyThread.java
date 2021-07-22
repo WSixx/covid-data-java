@@ -2,19 +2,24 @@ package br.com.lucad.models;
 
 import br.com.lucad.controller.CovidDataController;
 import br.com.lucad.models.http.MyHttpClient;
-import br.com.lucad.views.Result;
+import br.com.lucad.views.ShowResult;
 
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import static java.lang.Thread.sleep;
 
 public abstract class MyThread {
 
-    private final ExecutorService threadpool = Executors.newCachedThreadPool();
-    private Result result;
+    //TODO: TIRAR O THREAD DO CONTROLLER E PASSAR PARA CÁ
 
-    MyThread(Result result){
-        this.result = result;
+    private final ExecutorService threadpool = Executors.newCachedThreadPool();
+    private ShowResult showResult;
+
+    MyThread(ShowResult showResult) {
+        this.showResult = showResult;
     }
 
     public Future<CovidDataController> iniciaThread() {
@@ -31,13 +36,13 @@ public abstract class MyThread {
 
     }
 
-    public Result futureIsComplete(Future<CovidDataController> futureMyHttpClient) throws InterruptedException, ExecutionException {
+    public ShowResult futureIsComplete(Future<CovidDataController> futureMyHttpClient) throws InterruptedException, ExecutionException {
         if (futureMyHttpClient.isDone()) {
-            result = new Result(futureMyHttpClient.get());
-            result.printBrasilResult();
+            showResult = new ShowResult(futureMyHttpClient.get());
+            showResult.printBrasilResult();
             threadpool.shutdown();
         }
-        return result;
+        return showResult;
     }
 
 }
