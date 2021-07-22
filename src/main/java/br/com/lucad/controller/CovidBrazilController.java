@@ -11,40 +11,49 @@ import java.util.concurrent.Future;
 
 import static java.lang.Thread.sleep;
 
-public class CovidGlobalController {
+public class CovidBrazilController implements BaseCovidController {
 
     private final ExecutorService threadpool = Executors.newCachedThreadPool();
     private Result result;
 
-    public Result getGlobalDataAndPrint() throws InterruptedException, ExecutionException {
+    @Override
+    public Result getCovidDataAndPrint() throws InterruptedException, ExecutionException {
         Future<CovidDataController> futureMyHttpClient = iniciaThread();
-        System.out.println("--Covid Global--\n");
+        System.out.println("--Covid Brasil--\n");
         loadingResult(futureMyHttpClient);
         futureIsComplete(futureMyHttpClient);
         return result;
+
     }
 
-    private void futureIsComplete(Future<CovidDataController> futureMyHttpClient) throws InterruptedException, ExecutionException {
-        if (futureMyHttpClient.isDone()){
+    @Override
+    public void futureIsComplete(Future<CovidDataController> futureMyHttpClient) throws InterruptedException, ExecutionException {
+        if (futureMyHttpClient.isDone()) {
             result = new Result(futureMyHttpClient.get());
-            result.printGlobalResult();
+            result.printBrasilResult();
             threadpool.shutdown();
+
         }
     }
 
-    private void loadingResult(Future<CovidDataController> futureMyHttpClient) throws InterruptedException {
+    @Override
+    public void loadingResult(Future<CovidDataController> futureMyHttpClient) throws InterruptedException {
         int i = 0;
         while (!futureMyHttpClient.isDone()) {
             System.out.println("Loading.. " + ++i);
             sleep(1000);
         }
+
     }
 
     @NotNull
-    private Future<CovidDataController> iniciaThread() {
+    @Override
+    public Future<CovidDataController> iniciaThread() {
         MyHttpClient myHttpClient = new MyHttpClient();
         Future<CovidDataController> futureMyHttpClient = threadpool.submit(myHttpClient);
         return futureMyHttpClient;
+
     }
+
 
 }

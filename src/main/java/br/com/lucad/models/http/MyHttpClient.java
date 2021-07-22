@@ -29,19 +29,7 @@ public class MyHttpClient implements Callable<CovidDataController> {
     }
 
     @Override
-    public CovidDataController call() throws Exception {
+    public CovidDataController call() {
         return httpRequest();
     }
 }
-
-
-/*    public String run() throws IOException {
-        Request request = new Request.Builder()
-                .url(BASE_URL)
-                .build();
-        try (Response response = client.newCall(request).execute()) {
-            System.out.println(response.body().string());
-            //System.out.println(convertFromJson(response.body().string()));
-            return response.body().string();
-        }
-    }*/

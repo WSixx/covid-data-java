@@ -12,14 +12,15 @@ public class CovidDataController {
 
 
     public CovidGlobal getGlobal() {
-        return Global;
+        return this.Global;
     }
+
     public List<Countries> getCountries() {
-        return Countries;
+        return this.Countries;
     }
 
 
-    public CovidDataController fromJson(String body){
+    public CovidDataController fromJson(String body) {
         return JsonConvert.fromJson(body);
     }
 
