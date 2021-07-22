@@ -50,8 +50,7 @@ public class CovidBrazilController implements BaseCovidController {
     @Override
     public Future<CovidDataController> iniciaThread() {
         MyHttpClient myHttpClient = new MyHttpClient();
-        Future<CovidDataController> futureMyHttpClient = threadpool.submit(myHttpClient);
-        return futureMyHttpClient;
+        return threadpool.submit(myHttpClient);
 
     }
 

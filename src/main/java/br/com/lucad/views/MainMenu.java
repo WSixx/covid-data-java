@@ -30,9 +30,11 @@ public class MainMenu {
             CovidGlobalController covidGlobalController = new CovidGlobalController();
             CovidBrazilController covidBrazilController = new CovidBrazilController();
             switch (menu) {
-                case 1 -> result = covidGlobalController.getGlobalDataAndPrint();
+                case 1 -> result = covidGlobalController.getCovidDataAndPrint();
                 case 2 -> result = covidBrazilController.getCovidDataAndPrint();
-                case 3 -> System.out.println("Gravar"); //Passar um result getCovidGlobal
+                //TODO: Passar um result getCovidGlobal e gravar em um arq Texto
+                //TODO: Criar uma classe responsável por isso
+                case 3 -> System.out.println("Gravar");
                 case 4 -> {
                     inMenu = false;
                     userInput.close();
